@@ -1,34 +1,35 @@
 #include <iostream>
-#include <string>
+#include <vector>
 using namespace std;
 
 int main()
 {
-    string s;
-    int i(0),l,max,min;
-    getline(cin, s);
-    l = s.length();
-
-    for(auto c : s)
+    int n,max,min,x,y;
+    cin>>n;
+    vector <int> v(n);
+    cin>>v[0];
+    min = v[0];
+    max = v[0];
+    for(int i = 1; i < n; i++)
     {
-        min = s[i];
-        max = s[++i];
-        for(;l != -1;l--)
+        cin>>v[i];
+        if(v[i] >= max)
         {
-            if(max <= s[i])
-            {
-                 max = s[i];
-            }
-
-            else if(min > s[i])
-            {
-                min = s[i];
-            }
-            i++;
+            max = v[i];
+            x = i;
+        }
+        if(v[i]<=min)
+        {
+            min = v[i];
+            y = i;
         }
     }
+    swap(v[x] , v[y]);
 
-    cout<<min<<' '<<max;
+    for(int i = 0; i < n; i++)
+    {
+        cout<<v[i]<<' ';
+    }
     return 0;
 }
 
